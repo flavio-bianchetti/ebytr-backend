@@ -1,0 +1,7 @@
+node_modules/
+build/
+src/migrations/
+src/seeders/
+src/config/
+src/models/index.ts
+README.md
