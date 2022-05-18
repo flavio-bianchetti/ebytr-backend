@@ -5,7 +5,7 @@ import { IUser } from '../../interfaces';
 /**
  * Encrypts information with 'jsonwebtoken', generating a token
  */
-export default class JWT {
+export default class TokenGenerator {
   /**
    * Encrypts the IUser data object, generating a token or returning an error.
    * @param data
