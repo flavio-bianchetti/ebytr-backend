@@ -5,7 +5,7 @@ const {
   DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE, DB_PORT,
 } = process.env;
 
-const config: Options = {
+const Config: Options = {
   username: DB_USERNAME,
   password: DB_PASSWORD,
   database: DB_DATABASE,
@@ -18,4 +18,4 @@ const config: Options = {
   logging: false,
 };
 
-export default config;
+module.exports = Config;
