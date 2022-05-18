@@ -2,7 +2,7 @@
 :rotating_light: Você pode encontrar a versão deste documento em português _[aqui](#versão-em-português---ebytr---backend)_.
 
 This repository contains the project "_Ebytr - Backend_", technical challenge - Career Blitz - Trybe. This project consists of a to-do list application, made in React, NodeJS, MongoDB and layered architecture.
-The "_Ebytr - Frontend_" can be viewed _[here]()_.
+The "_Ebytr - Frontend_" can be viewed _[here](https://github.com/flavio-bianchetti/ebytr-frontend)_.
 
 
 ### Functionalities:
@@ -22,7 +22,7 @@ The "_Ebytr - Frontend_" can be viewed _[here]()_.
 ### ### Technologies used in the construction of this application:
 
 <section>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+  <a href="https://docs.docker.com/" target="_blank">
     <img
       align="center"
       height="30"
@@ -183,7 +183,7 @@ by _[Flávio Bianchetti - 2022](https://github.com/flavio-bianchetti)_.
 # Versão em português - Ebytr - Backend
 
 Este repositório contém o projeto "_Ebytr - Backend_", desafio técnico - Blitz de Carreira - Trybe. Este projeto consiste em uma aplicação de lista de tarefas, feita em React, NodeJS, MongoDB e arquitetura em camadas.
-O "_Ebytr - Frontend_" pode ser visualizado _[aqui]()_.
+O "_Ebytr - Frontend_" pode ser visualizado _[aqui](https://github.com/flavio-bianchetti/ebytr-frontend)_.
 
 
 ### Funcionalidades: 
@@ -202,7 +202,7 @@ O "_Ebytr - Frontend_" pode ser visualizado _[aqui]()_.
 ### Tecnologias utilizadas na construção desta aplicação:
 
 <section>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+  <a href="https://docs.docker.com/" target="_blank">
     <img
       align="center"
       height="30"
