@@ -25,4 +25,28 @@ export default class UserService {
       email: user.email,
     } as IUser;
   };
+
+  /**
+   * Check if the user is registered.
+   * @param email 
+   * @param password 
+   * @returns IUserToken -> user found.
+   * @returns undefined -> user not exists.
+   * @returns null -> encryption failure.
+   */
+  public static findUser
+  = async (email: string, password: string): Promise<IUserToken | undefined | null> => {
+    const user = await User.findOne({ where: { email }});
+    if (!user) return undefined;
+    if (!CryptString.verify(password, user.password)) return null;
+    const userInfo = { id: user.id, name: user.name, email: user.email } as IUser;
+    const token = TokenGenerator.encrypt(userInfo);
+    if (!token || token === null) return null;
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      token,
+    } as IUserToken;
+  };
 }
