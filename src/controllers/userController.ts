@@ -16,4 +16,18 @@ export default class UserController {
       return res.status(500).json({ error: err });
     }
   }
+
+  public static login = async (req: Request, res: Response): Promise<Response> => {
+    try {
+      const { email, password }: IUser = req.body;
+      if (!password) return res.status(402).json({ message: 'Password is required' });
+      const result = await UserService.findUser(email, password);
+      if (result === undefined) return res.status(404).json({ message: 'User not found' });
+      if (result === null) return res.status(422).json({ message: 'Encryption failure' });
+      return res.status(200).json(result);
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ error: err });
+    }
+  }
 }
