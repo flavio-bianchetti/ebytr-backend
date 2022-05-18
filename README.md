@@ -19,14 +19,30 @@ The "_Ebytr - Frontend_" can be viewed _[here]()_.
 
 ---
 
-### Were used in the construction of this page:
+### ### Technologies used in the construction of this application:
 
 <section>
   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
     <img
       align="center"
       height="30"
+      src="https://img.shields.io/badge/Docker-018bff?style=for-the-badge&logo=docker&logoColor=white"
+      target="_blank"
+    />
+  </a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+    <img
+      align="center"
+      height="30"
       src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
+      target="_blank"
+    />
+  </a>
+  <a href="https://www.typescriptlang.org/docs/" target="_blank">
+    <img
+      align="center"
+      height="30"
+      src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"
       target="_blank"
     />
   </a>
@@ -52,7 +68,8 @@ The "_Ebytr - Frontend_" can be viewed _[here]()_.
 
 ### Installation
 
-1. Open the terminal, in a directory of your choice, and clone the project:
+- Coming soon.
+<!-- 1. Open the terminal, in a directory of your choice, and clone the project:
 ```bash
   git clone git@github.com:flavio-bianchetti/blogs-api-project.git
 ```
@@ -150,11 +167,11 @@ The "_Ebytr - Frontend_" can be viewed _[here]()_.
     - **response:**
   - **GET - /post/search?q=:searchTerm**
     - **header:**
-    - **response:**
+    - **response:** -->
 
 ### Author's considerations:
 
-- There is no schedule of changes planned for this project.
+- This project is under development. Wait for information.
 
 ---
 
@@ -182,14 +199,30 @@ O "_Ebytr - Frontend_" pode ser visualizado _[aqui]()_.
 - _[Flávio Bianchetti](https://www.linkedin.com/in/flaviobianchetti/)_
 
 ---
-### Foram utilizados na construção desta página:
+### Tecnologias utilizadas na construção desta aplicação:
 
 <section>
   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
     <img
       align="center"
       height="30"
+      src="https://img.shields.io/badge/Docker-018bff?style=for-the-badge&logo=docker&logoColor=white"
+      target="_blank"
+    />
+  </a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+    <img
+      align="center"
+      height="30"
       src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
+      target="_blank"
+    />
+  </a>
+  <a href="https://www.typescriptlang.org/docs/" target="_blank">
+    <img
+      align="center"
+      height="30"
+      src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"
       target="_blank"
     />
   </a>
@@ -215,7 +248,8 @@ O "_Ebytr - Frontend_" pode ser visualizado _[aqui]()_.
 
 ### Instalação
 
-1. Abra o terminal, em um diretório de sua preferência, e faça o clone do projeto:
+- Em breve.
+<!-- 1. Abra o terminal, em um diretório de sua preferência, e faça o clone do projeto:
 ```bash
   git clone git@github.com:flavio-bianchetti/blogs-api-project.git
 ```
@@ -313,11 +347,11 @@ O "_Ebytr - Frontend_" pode ser visualizado _[aqui]()_.
     - **response:** 
   - **GET - /post/search?q=:searchTerm**
     - **header:** 
-    - **response:** 
+    - **response:**  -->
 
 ### Considerações do autor:
 
-- Não há calendário de alterações previstas para este projeto.
+- Este projeto encontra-se em desenvolvimento. Aguarde informações.
 
 ---
 
