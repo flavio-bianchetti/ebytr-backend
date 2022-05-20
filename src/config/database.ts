@@ -11,7 +11,7 @@ const Config: Options = {
   database: DB_DATABASE,
   host: DB_HOSTNAME,
   port: Number(DB_PORT) || 3306,
-  dialect: 'postgres',
+  dialect: 'mysql',
   dialectOptions: {
     timezone: 'Z',
   },
