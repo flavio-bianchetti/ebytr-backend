@@ -68,111 +68,157 @@ The "_Ebytr - Frontend_" can be viewed _[here](https://github.com/flavio-bianche
 
 ### Installation
 
-- Coming soon.
-<!-- 1. Open the terminal, in a directory of your choice, and clone the project:
+1. Open the terminal, in a directory of your choice, and clone the project:
 ```bash
-  git clone git@github.com:flavio-bianchetti/blogs-api-project.git
+  git@github.com:flavio-bianchetti/ebytr-backend.git
 ```
 
 2. Enter the project directory:
 ```bash
-  cd blogs-api-project
+  cd ebytr-backend
 ```
 3. Install dependencies:
 ```bash
   npm install
 ```
-4. The API uses the MySQL database to store the information. If you do not have MySQL installed, consult the documentation available _[here](https://dev.mysql.com/doc/)_ or change the file "_src/config/config.js_" to database of your choice.
+4. The API uses the MySQL database to store the information. If you do not have MySQL installed, consult the documentation available _[here](https://dev.mysql.com/doc/)_ or change the file "_src/config/database.ts_" for your database. preference.
 
-5. Create the database:
-```bash
-  npx sequelize db:create
-```
-6. Create the tables:
-```bash
-  npx sequelize db:migrate
-```
-7. Feed the database:
-```bash
-  npx sequelize db:seed:all
-```
-8. Configure the _[dotenv](https://www.npmjs.com/package/dotenv)_ file with your information:
+5. The application makes use of the _[Sequelize](https://sequelize.org/)_ dependency that allows the creation of the database automatically during startup and other features.
+
+6. Configure the _[dotenv](https://www.npmjs.com/package/dotenv)_ file with your information:
 ```javascript
-  DB_HOSTNAME=host_name // Ex.: localhost
-  DB_USER=db_username
-  DB_PASSWORD=db_password
-  DB_DATABASE=db_database
-  DB_PORT=number // Ex.: 3000
-  DB_DIALECT=dialect_name // Ex.: mysql
+  // example of padding:
+  DB_HOSTNAME=localhost
+  DB_USERNAME=root
+  DB_PASSWORD=myBankPassword
+  DB_DATABASE=ebytr_todolist
+  DB_PORT=3306
+  JWT_SECRET=mySuperPassword
+  APP_PORT=3002
 ```
-9. Launch the application:
+7. Launch the application:
 ```bash
   npm start
 ```
 
-### API usage:
+### Testing from the API:
 
-1. ...:
-![flavio-bianchetti-blogs-api-project](https://docs.google.com/uc?id=)
-
-2. ...:
-![flavio-bianchetti-blogs-api-project](https://docs.google.com/uc?id=)
-
-3. ...:
-![flavio-bianchetti-blogs-api-project](https://docs.google.com/uc?id=)
+1. For tests use _[Postman](https://www.postman.com/)_ or _[Insomnia](https://insomnia.rest/download)_, in the routes listed below.
 
 ### Available resources:
+- **Create:**
+  - **POST /create**
+    - **request:** requires that the information for registering the new user be passed through the body, as shown in the example below.
+    ```bash
+    {
+      "email": "email@email.com",
+      "name" : "User",
+      "password": "123456"
+    }
+    ```
+    - **response:** on success returns an object similar to the one shown below.
+    ```bash
+    {
+      "id": 2,
+      "name": "User",
+      "email": "email@email.com"
+    }
+    ```
 - **Login:**
   - **POST /login**
-    - **request:** 
-    - **response:**
-- **User:**
-  - **POST /user**
+    - **request:** requires the correct information to be passed through the body to access the application, as shown in the example below.
+    ```bash
+    {
+      "email": "email@email.com",
+      "name" : "User",
+      "password": "123456"
+    }
+    ```
+    - **response:** on success returns an object similar to the one shown below.
+    *OBS:* For all the next requests it is necessary to inform the generated token.
+    ```bash
+    {
+      "id": 2,
+      "name": "User",
+      "email": "email@email.com",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoyLCJuYW1lIjoiVXN1w6FyaW8iLCJlbWFpbCI6ImVtYWlsQGVtYWlsLmNvbSJ9LCJpYXQiOjE2NTMwNDg2MDIsImV4cCI6MTY1MzY1MzQwMn0.fgt0uKK3ERN-yNOw5fnucs0Qzu4Yl3pY5R9koJyiffc"
+    }
+    ```
+- **TodoList:**
+  - **POST /todolist**
+    - **request:** requires that the information for registering the new user be passed through the body, as shown in the example below.
+    ```bash
+      {
+        "userId": 2, // userid
+        "description": "my task 1",
+        "status": "inProgress" // Must contain the values ​​'inProgress', 'pending' or 'finished'
+      }
+    ```
+    - **response:** on success returns an object similar to the one shown below.
+    ```bash
+      {
+        "id": 4,
+        "userId": 2,
+        "description": "my task 1",
+        "date": "Fri May 20 2022 09:23:27 GMT-0300 (Brasilia Standard Time)",
+        "status": "inProgress"
+      }
+    ```
+  - **GET /todolist**
+    - **request:** requires that the desired user id be passed through the link, as shown in the example below.
+    ```http
+      http://localhost:3002/todolist/2
+    ```
+    - **response:** in case of success, returns an array with all the tasks registered by the informed user.
+    ```bash
+      [
+        {
+          "id": 4,
+          "userId": 2,
+          "description": "my task 1",
+          "date": "Fri May 20 2022 09:23:27 GMT-0300 (Brasilia Standard Time)",
+          "status": "inProgress"
+        }
+      ]
+    ```
+  - **PUT /todolist/task/:id**
     - **request:**
-    - **response:**
-  - **GET - /user**
-    - **header:**
-    - **response:**
-  - **GET - /user/:id**
-    - **header:**
-    - **response:**
-  - **DELETE - /user/me**
-    - **header:**
-    - **response:**
-- **Categories:**
-  - **POST /categories**
-    - **header:**
-    - **request:**
-    - **response:**
-  - **GET - /categories**
-    - **header:**
-    - **response:**
-- **Post:**
-  - **POST /post**
-    - **header:**
-    - **request:**
-    - **response:**
-  - **GET - /post**
-    - **header:**
-    - **response:**
-  - **GET - /post/:id**
-    - **header:**
-    - **response:**
-  - **PUT - /post/:id**
-    - **header:**
-    - **request:**
-    - **response:**
-  - **DELETE - /post/:id**
-    - **header:**
-    - **response:**
-  - **GET - /post/search?q=:searchTerm**
-    - **header:**
-    - **response:** -->
+      - requires that the id of the task to be changed be passed through the link, as shown in the example below.
+        ```http
+          http://localhost:3002/todolist/task/4
+        ```
+      - it also needs that the information to change the task be passed through the body.
+        ```bash
+          {
+            "description": "my changed task 1",
+            "status": "pending"
+          }
+        ```
+    - **response:** on success returns an object similar to the one shown below.
+    ```bash
+      {
+        "id": 4,
+        "userId": 2,
+        "description": "my changed task 1",
+        "date": "Fri May 20 2022 09:23:27 GMT-0300 (Brasilia Standard Time)",
+        "status": "pending"
+      }
+    ```
+  - **DELETE /todolist/task/:id**
+    - **request:** requires the id of the task to be deleted to be passed through the link, as shown in the example below.
+        ```http
+          http://localhost:3002/todolist/task/4
+        ```
+    - **response:** in case of success, a response with status 200 is returned, with the message body empty.
 
-### Author's considerations:
+### Problems found:
+- Errors occurred when deploying the application on *Heroku* are preventing the correct remote operation of the API.
 
-- This project is under development. Wait for information.
-
+### Current stages of development:
+   - The database is already in *Supabase* and is being tested.
+   - There were problems installing the application on *Heroku* and their fixes are in progress.
+   - Local tests are being carried out in the application using *Docker*.
+   - *Tests* will be implemented soon.
 ---
 
 by _[Flávio Bianchetti - 2022](https://github.com/flavio-bianchetti)_.
@@ -248,110 +294,157 @@ O "_Ebytr - Frontend_" pode ser visualizado _[aqui](https://github.com/flavio-bi
 
 ### Instalação
 
-- Em breve.
-<!-- 1. Abra o terminal, em um diretório de sua preferência, e faça o clone do projeto:
+1. Abra o terminal, em um diretório de sua preferência, e faça o clone do projeto:
 ```bash
-  git clone git@github.com:flavio-bianchetti/blogs-api-project.git
+  git@github.com:flavio-bianchetti/ebytr-backend.git
 ```
 
 2. Entre no diretório do projeto:
 ```bash
-  cd blogs-api-project
+  cd ebytr-backend
 ```
 3. Instale as dependências:
 ```bash
   npm install
 ```
-4. A API utiliza o banco de dados MySQL para armazenar as informações. Caso não tenha o MySQL instalado, consulte a documentação disponível _[aqui](https://dev.mysql.com/doc/)_ ou altere o arquivo "_src/config/config.js_" para o banco de dados de sua preferência.
+4. A API utiliza o banco de dados MySQL para armazenar as informações. Caso não tenha o MySQL instalado, consulte a documentação disponível _[aqui](https://dev.mysql.com/doc/)_ ou altere o arquivo "_src/config/database.ts_" para o banco de dados de sua preferência.
 
-5. Faça a criação do banco de dados:
-```bash
-  npx sequelize db:create
-```
-6. Faça a criação das tabelas:
-```bash
-  npx sequelize db:migrate
-```
-7. Faça a alimentação do banco de dados:
-```bash
-  npx sequelize db:seed:all 
-```
-8. Configure o arquivo _[dotenv](https://www.npmjs.com/package/dotenv)_ com suas informações:
+5. A aplicação faz utilização da dependência _[Sequelize](https://sequelize.org/)_ que permite a crição do banco de dados automaticamente durante a inicialização e outras funcionalidades.
+
+6. Configure o arquivo _[dotenv](https://www.npmjs.com/package/dotenv)_ com suas informações:
 ```javascript
-  DB_HOSTNAME=host_name // Ex.: localhost
-  DB_USER=db_username
-  DB_PASSWORD=db_password
-  DB_DATABASE=db_database
-  DB_PORT=number // Ex.: 3000
-  DB_DIALECT=dialect_name // Ex.: mysql
+  // exemplo de preenchimento:
+  DB_HOSTNAME=localhost
+  DB_USERNAME=root
+  DB_PASSWORD=minhaSenhaDoBanco
+  DB_DATABASE=ebytr_todolist
+  DB_PORT=3306
+  JWT_SECRET=minhaSuperSenha
+  APP_PORT=3002
 ```
-9. Inicie a aplicação:
+7. Inicie a aplicação:
 ```bash
   npm start 
 ```
 
-### Utilização da API:
+### Testando da API:
 
-1. Faça o cadastro da nova pessoa (exemplo: http://localhost:3000/) informando o campos _name_, _motherName_ e receba como resposta ...:
-![flavio-bianchetti-blogs-api-project](https://docs.google.com/uc?id=)
-
-2...:
-![flavio-bianchetti-blogs-api-project](https://docs.google.com/uc?id=)
-
-3...:
-![flavio-bianchetti-blogs-api-project](https://docs.google.com/uc?id=)
+1. Para os testes utilize o _[Postman](https://www.postman.com/)_ ou _[Insomnia](https://insomnia.rest/download)_, nas rotas abaixo discriminadas.
 
 ### Recursos disponíveis:
+- **Create:**
+  - **POST /create** 
+    - **request:** necessita de que sejam passadas através do body as informações para cadastro do novo usuário, conforme o exemplo abaixo.
+    ```bash
+    {
+      "email": "email@email.com",
+      "name" : "Usuário",
+      "password": "123456"
+    }
+    ```
+    - **response:** em caso de sucesso retorna um objeto similar ao exibido abaixo.
+    ```bash
+    {
+      "id": 2,
+      "name": "Usuário",
+      "email": "email@email.com"
+    }
+    ```
 - **Login:**
-  - **POST /login**
-    - **request:** 
-    - **response:** 
-- **User:**
-  - **POST /user**
-    - **request:** 
-    - **response:** 
-  - **GET - /user**
-    - **header:** 
-    - **response:** 
-  - **GET - /user/:id**
-    - **header:** 
-    - **response:** 
-  - **DELETE - /user/me**
-    - **header:** 
-    - **response:** 
-- **Categories:**
-  - **POST /categories**
-    - **header:** 
-    - **request:** 
-    - **response:** 
-  - **GET - /categories**
-    - **header:** 
-    - **response:** 
-- **Post:**
-  - **POST /post**
-    - **header:** 
-    - **request:** 
-    - **response:** 
-  - **GET - /post**
-    - **header:** 
-    - **response:** 
-  - **GET - /post/:id**
-    - **header:** 
-    - **response:** 
-  - **PUT - /post/:id**
-    - **header:** 
-    - **request:** 
-    - **response:** 
-  - **DELETE - /post/:id**
-    - **header:** 
-    - **response:** 
-  - **GET - /post/search?q=:searchTerm**
-    - **header:** 
-    - **response:**  -->
+  - **POST /login** 
+    - **request:** necessita de que sejam passadas através do body as informações corretas para o acesso à aplicação, conforme o exemplo abaixo.
+    ```bash
+    {
+      "email": "email@email.com",
+      "name" : "Usuário",
+      "password": "123456"
+    }
+    ```
+    - **response:** em caso de sucesso retorna um objeto similar ao exibido abaixo.
+    *OBS:* Para todas as próximas requisições é necessário informar o token gerado.
+    ```bash
+    {
+      "id": 2,
+      "name": "Usuário",
+      "email": "email@email.com",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoyLCJuYW1lIjoiVXN1w6FyaW8iLCJlbWFpbCI6ImVtYWlsQGVtYWlsLmNvbSJ9LCJpYXQiOjE2NTMwNDg2MDIsImV4cCI6MTY1MzY1MzQwMn0.fgt0uKK3ERN-yNOw5fnucs0Qzu4Yl3pY5R9koJyiffc"
+    }
+    ```
+- **TodoList:**
+  - **POST /todolist**
+    - **request:** necessita de que sejam passadas através do body as informações para cadastro do novo usuário, conforme o exemplo abaixo.
+    ```bash
+      {
+        "userId": 2, // id do usuário
+        "description": "minha tarefa 1",
+        "status": "inProgress" // Deve conter os valores 'inProgress', 'pending' ou 'finished'
+      }
+    ```
+    - **response:** em caso de sucesso retorna um objeto similar ao exibido abaixo.
+    ```bash
+      {
+        "id": 4,
+        "userId": 2,
+        "description": "minha tarefa 1",
+        "date": "Fri May 20 2022 09:23:27 GMT-0300 (Horário Padrão de Brasília)",
+        "status": "inProgress"
+      }
+    ```
+  - **GET /todolist**
+    - **request:** necessita de que seja passado através do link o id do usuário desejado, conforme o exemplo abaixo.
+    ```http
+      http://localhost:3002/todolist/2
+    ```
+    - **response:** em caso de sucesso retorna um array com todas as tarefas cadastradas do usuário informado.
+    ```bash
+      [
+        {
+          "id": 4,
+          "userId": 2,
+          "description": "minha tarefa 1",
+          "date": "Fri May 20 2022 09:23:27 GMT-0300 (Horário Padrão de Brasília)",
+          "status": "inProgress"
+        }
+      ]
+    ```
+  - **PUT /todolist/task/:id**
+    - **request:**
+      - necessita de que seja passado através do link o id da tarefa a ser alterada, conforme o exemplo abaixo.
+        ```http
+          http://localhost:3002/todolist/task/4
+        ```
+      - necessita também de que sejam passadas através do body as informações para alteração da tarefa.
+        ```bash
+          {
+            "description": "minha tarefa alterada 1",
+            "status": "pending"
+          }
+        ```
+    - **response:**  em caso de sucesso retorna um objeto similar ao exibido abaixo.
+    ```bash
+      {
+        "id": 4,
+        "userId": 2,
+        "description": "minha tarefa alterada 1",
+        "date": "Fri May 20 2022 09:23:27 GMT-0300 (Horário Padrão de Brasília)",
+        "status": "pending"
+      }
+    ```
+  - **DELETE /todolist/task/:id**
+    - **request:** necessita de que seja passado através do link o id da tarefa a ser excluída, conforme o exemplo abaixo.
+        ```http
+          http://localhost:3002/todolist/task/4
+        ```
+    - **response:**  em caso de sucesso é retornada uma resposta com o status 200, com o corpo da mensagem vazio.
 
-### Considerações do autor:
+### Problemas encontrados:
+- Erros ocorridos na implantação da aplicação no *Heroku* estão impedindo o correto funcionamento remoto da API.
 
-- Este projeto encontra-se em desenvolvimento. Aguarde informações.
+### Etapas atuais do desenvolvimento:
+  - O banco de dados já está no *Supabase* e encontra-se em testes.
+  - Ocorreram problemas na instalação da aplicação no *Heroku* e suas correções estão em andamento.
+  - Estão sendo feitos testes locais na aplicação utilizando o *Docker*.
+  - Os *Testes* serão implementados em breve.
 
 ---
 
