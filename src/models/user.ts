@@ -27,7 +27,6 @@ User.init({
     type: DataTypes.STRING,
   }
 }, {
-  underscored: true,
   sequelize: database,
   modelName: 'users',
   timestamps: false,
