@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "./build/server",
-  "engines": { "node": "17.7.2" },
+  "engines": { "node": "16.15.0" },
   "scripts": {
     "build": "/bin/sh tsc_eval.sh",
     "test": "mocha -r ts-node/register ./src/tests/*$NAME*.{test,spec}.ts -t 10000 --exit",
