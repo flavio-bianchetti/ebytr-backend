@@ -3,15 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "./build/server",
-  "engines": { "node": "14.18.2" },
   "scripts": {
     "build": "/bin/sh tsc_eval.sh",
     "test": "mocha -r ts-node/register ./src/tests/*$NAME*.{test,spec}.ts -t 10000 --exit",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "prestart": "npm run build && npm run db:reset",
-    "start": "node build/index.js",
+    "start": "node .",
     "predev": "npm run build && npm run db:reset",
-    "postinstall": "tsc",
     "lint": "eslint ./src --ext .ts"
   },
   "author": "flavio-bianchetti",
@@ -24,7 +22,7 @@
     "express": "^4.18.1",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
-    "node": "^14.18.2",
+    "node": "^17.7.2",
     "sequelize": "^6.19.0",
     "sequelize-cli": "^6.4.1"
   },
