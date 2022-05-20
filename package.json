@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "./build/server",
+  "engines": { "node": "17.7.2" },
   "scripts": {
     "build": "/bin/sh tsc_eval.sh",
     "test": "mocha -r ts-node/register ./src/tests/*$NAME*.{test,spec}.ts -t 10000 --exit",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "prestart": "npm run build && npm run db:reset",
-    "start": "node .",
+    "start": "node build/index.js",
     "predev": "npm run build && npm run db:reset",
-    "postinstall": "if [ ! -z 'cat ./packages.npm' ]; then npm i --ignore-scripts $(cat ./packages.npm); fi",
+    "postinstall": "tsc",
     "lint": "eslint ./src --ext .ts"
   },
   "author": "flavio-bianchetti",
